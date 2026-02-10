@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>San Valentín 💖</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(180deg, #ffdde1, #ec7ad0);
+      overflow: hidden;
+    }
+
+    /* -------- PANTALLA 1 -------- */
+    .screen {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #b3005e;
+      margin-bottom: 30px;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 70px;
+      margin-top: 50px;
+      z-index: 2;
+    }
+
+    button {
+      padding: 15px 35px;
+      font-size: 1.3rem;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    #yesBtn {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    #noBtn {
+      background: #999;
+      color: white;
+    }
+
+    /* -------- FLORES -------- */
+    .flowers {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      font-size: 2.5rem;
+    }
+
+    .flower {
+      position: absolute;
+      animation: float 8s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(100vh);
+      }
+      to {
+        transform: translateY(-10vh);
+      }
+    }
+
+    /* -------- CORAZONES -------- */
+    .heart {
+      position: absolute;
+      color: rgba(255, 0, 100, 0.6);
+      font-size: 20px;
+      animation: heartFloat 6s linear infinite;
+    }
+
+    @keyframes heartFloat {
+      from {
+        transform: translateY(100vh);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-10vh);
+        opacity: 0;
+      }
+    }
+
+    /* -------- PANTALLA 2 -------- */
+    #screen2 {
+      display: none;
+      background: black;
+      color: white;
+      text-align: center;
+      padding: 40px;
+    }
+
+
+    #screen2 h2 {
+      position: relative;
+      font-size: 3rem;
+      z-index: 1;
+    }
+
+.photo-grid {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh; /* clave para mobile y desktop */
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 0;
+  opacity: 0.35;
+}
+
+.photo-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .photo-grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+  }
+}
+
+
+/* BOTÓN VER CARTA */
+.letter-btn {
+  margin-top: 30px;
+  padding: 15px 35px;
+  font-size: 1.2rem;
+  border-radius: 40px;
+  border: none;
+  cursor: pointer;
+  background: #ff4d6d;
+  color: white;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.letter-btn:hover {
+  transform: scale(1.1);
+}
+
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 400px;
+  width: 80%;
+  animation: pop 0.4s ease;
+}
+
+.modal-content h3 {
+  color: #b3005e;
+  margin-bottom: 20px;
+}
+
+.modal-content p {
+  font-size: 1.2rem;
+  color: #444;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* animación */
+@keyframes pop {
+  from {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+/* CARTA */
+.letter {
+  background: #fdf6e3;
+  width: 320px;
+  max-width: 90%;
+  padding: 30px;
+  border-radius: 10px;
+  position: relative;
+  transform-origin: top;
+  animation: openLetter 0.8s ease forwards;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.letter-inner {
+  opacity: 0;
+  animation: showText 0.4s ease forwards;
+  animation-delay: 0.6s;
+}
+
+@keyframes openLetter {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes showText {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes closeLetter {
+  from {
+    transform: scaleY(1);
+  }
+  to {
+    transform: scaleY(0);
+  }
+}
+
+
+  </style>
+</head>
+<body>
+
+  <!-- PANTALLA 1 -->
+  <div class="screen" id="screen1">
+    <img id="moodImg" src="minion.webp" alt="" style="width: 300px;">
+    <h1>¿Querés ser mi Valentine? 💘</h1>
+
+    <div class="buttons">
+      <button id="yesBtn">Sí 💕</button>
+      <button id="noBtn">No.</button>
+    </div>
+  </div>
+
+  <!-- FLORES -->
+  <div class="flowers">
+    <span class="flower" style="left:10%; animation-delay:0s;">🌻</span>
+    <span class="flower" style="left:30%; animation-delay:2s;">🌷</span>
+    <span class="flower" style="left:50%; animation-delay:1s;">🌻</span>
+    <span class="flower" style="left:70%; animation-delay:3s;">🌷</span>
+    <span class="flower" style="left:90%; animation-delay:4s;">🌻</span>
+  </div>
+
+  <!-- PANTALLA 2 -->
+  <div class="screen" id="screen2">
+  <div class="photo-grid">
+    <img src="WhatsApp Image 2026-02-10 at 14.57.53.jpeg">
+    <img src="WhatsApp Image 2026-02-10 at 14.57.54 (1).jpeg">
+    <img src="WhatsApp Image 2026-02-10 at 14.57.54.jpeg">
+    <img src="WhatsApp Image 2026-02-10 at 14.57.55.jpeg">
+    <img src="WhatsApp Image 2026-02-10 at 14.57.55 (1).jpeg">
+    <img src="WhatsApp Image 2026-02-10 at 14.57.55 (2).jpeg">
+    <img src="WhatsApp Image 2026-02-10 at 14.57.56.jpeg">
+    <img src="WhatsApp Image 2026-02-10 at 14.57.57.jpeg">
+    <img src="WhatsApp Image 2026-02-10 at 14.58.34.jpeg">
+    <img src="WhatsApp Image 2026-02-10 at 14.58.35.jpeg">
+    <img src="WhatsApp Image 2026-02-10 at 14.57.56 (1).jpeg">
+    <img src="WhatsApp Image 2026-02-10 at 14.57.56 (2).jpeg">
+    <img src="WhatsApp Image 2026-02-10 at 14.58.34 (1).jpeg">
+    <img src="WhatsApp Image 2026-02-10 at 14.58.35 (1).jpeg">
+    <img src="WhatsApp Image 2026-02-10 at 14.58.35 (2).jpeg">
+
+  </div>
+    <h2>Gracias te amo 💘</h2>
+    <h4>YA TE QUIERO VERR</h4>
+    <button id="openLetter" class="letter-btn">Ver carta 💌</button>
+  </div>
+
+  <script>
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+const moodImg = document.getElementById("moodImg");
+
+const screen1 = document.getElementById("screen1");
+const screen2 = document.getElementById("screen2");
+
+
+
+yesBtn.addEventListener("click", () => {
+  screen1.style.display = "none";
+  screen2.style.display = "flex";
+});
+let yesScale = 1;
+let noClicks = 0;
+
+
+
+  const noTexts = [
+    "¿Segura?",
+    "Poné si",
+    "Dalee",
+    "Micaela",
+    "Ja"
+  ];
+
+const images = [
+  "mikabb.png",
+  "mikavizca.png",
+  "mikatriste.png",
+  "hamster.png",
+  "gato.png",
+  "yo.png"
+];
+
+noBtn.addEventListener("click", () => {
+  // texto del NO
+  noBtn.innerText = noTexts[noClicks % noTexts.length];
+
+  // imagen
+  const imgIndex = Math.min(noClicks, images.length - 1);
+  moodImg.src = images[imgIndex];
+
+  // agranda el SÍ
+  yesScale += 0.35;
+  yesBtn.style.transform = `scale(${yesScale})`;
+
+  // mover el NO
+  noBtn.style.left = Math.random() * (window.innerWidth - noBtn.offsetWidth) + "px";
+  noBtn.style.top = Math.random() * (window.innerHeight - noBtn.offsetHeight) + "px";
+
+  if (yesScale > 3) {
+    noBtn.style.display = "none";
+  }
+
+  noClicks++;
+});
+
+</script>
+
+<!-- MODAL CARTA -->
+<!-- MODAL CARTA -->
+<div id="letterModal" class="modal">
+  <div class="letter">
+    <span id="closeLetter" class="close">&times;</span>
+
+    <div class="letter-inner">
+      <h3 style="display: flex; justify-content:center;">💌 SPOILER</h3>
+      <p style="display: flex; justify-content:center;">Disponible desde el 14 de febrero. </p>
+      <p style="display: flex; justify-content:center;">Ansiosa?</p>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  const openLetter = document.getElementById("openLetter");
+  const modal = document.getElementById("letterModal");
+  const closeLetter = document.getElementById("closeLetter");
+
+  openLetter.addEventListener("click", () => {
+    modal.style.display = "flex";
+  });
+
+  closeLetter.addEventListener("click", () => {
+  const letter = document.querySelector(".letter");
+  letter.style.animation = "closeLetter 0.4s ease forwards";
+
+  setTimeout(() => {
+    modal.style.display = "none";
+    letter.style.animation = "openLetter 0.8s ease forwards";
+  }, 400);
+});
+
+
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+</script>
+
+</body>
+</body>
+</html>
