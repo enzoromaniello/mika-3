@@ -12,10 +12,11 @@
     }
 
     body {
-      height: 100vh;
-      background-image: url(floresFondo.png);
-      overflow: hidden;
-    }
+    min-height: 100vh;
+    background-image: url(floresFondo.png);
+    overflow-x: hidden;
+  }
+
 
     /* -------- PANTALLA 1 -------- */
     .screen {
@@ -218,22 +219,47 @@
 
 
 /* CARTA */
-.letter {
+
+.letter{
   background: #fdf6e3;
-  width: 320px;
-  max-width: 90%;
-  padding: 30px;
-  border-radius: 10px;
-  position: relative;
-  transform-origin: top;
-  animation: openLetter 0.8s ease forwards;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    width: 1200px;
+    max-width: 90%;
+    padding: 30px;
+    border-radius: 10px;
+    position: relative;
+    transform-origin: top;
+    animation: openLetter 0.8s ease forwards;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    scroll-behavior: smooth;
+  max-height: 90vh;
+  overflow-y: auto;
+
+
+
 }
+
+
+@media (max-width: 768px) {
+  .letter {
+    background: #fdf6e3;
+    width: 320px;
+    max-width: 90%;
+    padding: 30px;
+    border-radius: 10px;
+    position: relative;
+    transform-origin: top;
+    animation: openLetter 0.8s ease forwards;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  }
+}
+
+
 
 .letter-inner {
   opacity: 0;
   animation: showText 0.4s ease forwards;
   animation-delay: 0.6s;
+   
 }
 
 @keyframes openLetter {
@@ -273,7 +299,7 @@
   <!-- PANTALLA 1 -->
   <div class="screen" id="screen1">
     <img id="moodImg" src="minion.webp" alt="" style="width: 300px;">
-    <h1 style="background-color: pink; border-radius: 10px;">¿Querés ser mi Valentine? 💘</h1>
+    <h1 style="background-color: pink; border-radius: 10px;">¿Me amás? 💘</h1>
 
     <div class="buttons">
       <button id="yesBtn">Sí 💕</button>
@@ -310,12 +336,51 @@
     <img src="WhatsApp Image 2026-02-10 at 14.58.35 (2).jpeg">
 
   </div>
-    <h2>Gracias te amo 💘</h2>
-    <h4>YA TE QUIERO VERR</h4>
+    <h2>Gracias te amo más 💘</h2>
+    <h4>Ahora si, tu cartita</h4>
     <button id="openLetter" class="letter-btn">Ver carta 💌</button>
+    <button id="openLetterExtra" class="letter-btn">Extra 💖</button>
   </div>
 
-  <script>
+
+
+<!-- MODAL CARTA -->
+<!-- MODAL CARTA -->
+<div id="letterModal" class="modal">
+  <div class="letter">
+    <span id="closeLetter" class="close">&times;</span>
+
+    <div class="letter-inner" id="letter1">
+      <h3 style="display: flex; justify-content:center;">Feliz san valentin mica 💘</h3>
+      <p style="display: flex; justify-content:center;">El amor de mi vida, por fin paso este día tan especial junto a alguien que amo, desde chiquito veo parejas felices este día y siempre quise tener algo asi de lindo, y gracias a vos puedo tenerlo y compartiendolo con la mujer mas hermosa del universo ❤️.
+De verdad que nose como agradecerte todo lo que haces por mi, mas que nada cómo me haces sentir de lindo todos los días y como se sienten vacios cuando no estas, como siempre te dije en mis dias oscuros sos mi rayito de luz y siempre lo vas a ser. <br>
+Aunque tengamos nuestras peleas a veces yo se que eso nunca va a superar lo que nos amamos el uno al otro, y que vamos a seguir juntos siempre pase lo que pase, para el proximo año festejar otro san valentin con mas cartitas, detalles y todas esas cositas que me das que me llenan el corazón cómo no te das idea.
+Cómo sabras no soy gran escritor de cartas, ni mucho menos dibujante o de hacer manualidades, pero que sepas que todo lo que te hago es con todo el amor que me sale de adentro por vos y me esfuerzo mucho por eso, aunque con vos siento tantas cosas lindas que se me hace facil hacerlo, con vos todo es mas lindo, todo es mejor ❤️.
+Y se que la distancia no va a poder con nosotros, pienso ir mil y un veces mas a verte, aunque sean 5 minutos, porque estoy seguro de que van a ser los mejores 5 minutos de mi vida solo si los comparto con vos. <br>
+Nunca voy a olvidar ese primer día que nos vimos, ese primer beso el 24 de diciembre a las 5:46pm, cuando nos vimos por primera vez, ese primer abrazo nervioso, esos paseos con las calles vacias porque somos los unicos boludos que nos vemos una tarde en navidad, pero que sepas que gracias a ese rato con vos, fue de las mejores navidades que pase, todo gracias a vos mica, para que entiendas lo que me haces sentir. ❤️ <br>
+Queria que sepas que estos meses que empezamos a vernos, los disfrute muchisimo, siempre estoy mas feliz cuando hablamos y cuando nos vemos ni te imaginas, vuelvo sonriendo cómo tarado todo el viaje pensando en lo lindo que es estar con vos, en cada beso, abrazo, los te amo, las charlas interminables, aunque todo se hace tan corto estando con vos, horas se hacen minutos solo viendo esa carita tan perfecta que tenes, que hermosa sos mica.
+Nunca voy a entender tus inseguridades siendo la mina hermosa que sos, pero prometo estar ahi para apoyarte cuando dudes de esto o hasta de vos misma, porque sos la mujer mas perfecta que existe y nunca lo dudes mica, para mi lo sos, mi princesa. </p>
+    <h3 style="display: flex; justify-content:center;">Feliz san valentin amooor ❤️❤️❤️</h3>
+    </div>
+
+    <div class="letter-inner" id="letter2" style="display:none;">
+      <h3 style="display:flex; justify-content:center;">Mi primera carta 💖</h3>
+      <p>
+        Hola mica, esta es la primera carta que hago en mi vida, y quería que vaya dedicada al amor de mi vida, vos, si estas leyendo esto significa que ya nos vimos y pude darte todos mis regalitos, espero que disfrutes las flores, el chocolate y todas las boludeces que sé que te gustan asi como estas cartas que, aunque no sean las mejores, las estoy sacando desde lo mas profundo de mi corazón.
+Mica, amor, bebe, mi princesa, mi rayito de luz, hay tantas formas que tengo para decirte y ninguna define la mujer que sos al completo, sos totalmente perfecta para mi y, aunque a veces ni para vos misma lo seas, quiero estar siempre ahi para recordarte que sos mi chica ideal y todo lo que siempre quise como novia, que todavia no lo somos, (aunque falta poco para que pase), te amo como si lo fueramos, como si te conociera de toda la vida y quisiera estar el resto de ella junto a vos, crecer juntitos, tener mascotas, a mantequilla, quizas en un futuro quien sabe hasta hijos, sé que a veces sueño de más, pero es todo lo que se me pasa por la cabeza cuando veo esa carita hermosa que tenes, cuando cada sonrisa que veo me enamora un poquito mas de lo que ya estoy y daria todo por hacerte reir denuevo para volver a verla porque es lo mas lindo del mundo, no me cansaria nunca de verte, leerte, escucharte, y ahora que nos vimos y podamos seguir viendonos mas seguido, tus besos, abrazos, o solo las miradas en silencio viendote a los ojos con todo el amor que tengo y siento por vos, ojalá nunca termine esto y seas vos la mujer con la que este hasta siempre. <br>
+Amo cada parte de vos, amo tus rulos, tus ojitos hermosos, tu nariz linda, tu boquita preciosa, tu cuerpo perfecto, desde tus piernas hasta tus manitos, amo que seas bajita, te amo enojona, te amo toxica, te amo cariñosa, te amo por dormirte, te amo recien despierta, amo verte crecer, estar en tu felicidad junto a vos, en tu tristeza junto a vos, da igual como estes siempre quiero estar a tu lado Mica, con cada logro que hagas para felicitarte y estar orgulloso de vos y en tus derrotas para acompañarte y recordarte que no hay nada que no puedas hacer y que siempre voy a estar ahi cuando crees que algo no se puede, vos podes con todo Mica, sos la mujer mas fuerte que conocí, sé las cosas por las que pasaste, desde muy chica, y no solo aguantaste todo eso sino que terminaste como la mina que sos hoy, simplemente perfecta e increible para cualquier persona con los ojos para verte realmente, todavia no puedo creer que una chica asi de hermosa, inteligente, graciosa, humilde y buena persona como sos le de bola a un pibe como yo, nose que me ves de especial pero de verdad agradezco que veas eso en mí que ni yo mismo veo, pense que nunca nadie me iba a amar como lo haces vos y es lo mas lindo que hay sentirse asi de querido, de verdad que solo quiero devolverte un poquito de lo que me haces sentir y seria el pibe mas feliz del mundo, porque ese soy con vos Mica, me siento demasiado increible solo hablando con vos detras de una pantalla y no me imagino como me voy a sentir despues de verte, me tiemblan las manos como tarado sabiendo que este finde te voy a ver y voy a poder abrazarte al fin, sentirte cerca, despues de imaginarlo mil y un veces al fin va a ser real, y espero que te haya gustado en persona como te gusto por chat porque ese es mi mayor miedo, algun dia dejar de gustarte sea porque no te gusto asi y simplemente te aburras de mi o conozcas algo que no te guste, no paro de darle vueltas a eso en mi cabeza porque siempre tuve mucho miedo a perderte, pero con lo que te amo y vos me amas, es imposible que pase, vamos a poder superar todo si seguimos juntos y sé que vamos a vernos muchas veces mas, hacer cada cosita que anotamos y ser felices juntos, es todo lo que quiero en esta vida Solo porque te amo mica, te adoro, te quiero, te necesito, te extraño cada dia que no te tengo cerca y se que te voy a extrañar apenas me suba a ese tren para no verte, aunque sea por una semana mas, si estas leyendo esto cuando me fui que sepas que estoy llorando de vuelta pensando en cada momento que pasamos y extrañandote muchisimo, te necesito cerca Mica, siempre siempre porque te amo mucho mucho muuuucho como las vacas jaja. <br>
+Creo que no hay mucho mas para decir que eso, espero tener la valentia de decirte estas cosas en persona, porque te juro que no se demostrar a veces pero siento demasiadas cosas lindas por vos y juro hacertelo saber todo lo que pueda cada dia desde hoy, y que estes segura de lo que te amo y de lo preciosa que sos, dios solo de imaginarme lo hermosa que vas a estar ese dia, viendote al bajar de ese tren, toda chiquita y linda como siempre, ver esa carita emocionada por verme, no aguantar y romperme mientras corro a abrazarte y que ese abrazo no termine nunca, va a ser eterno para mi en mi mente y mi corazon mica que lo sepas.
+Ya paro porque no quiero que esta carta dure 5 hojas, pero ni mil hojas alcanzarian lo que siento por vos Micaela, sos el amor de mi vida y siempre lo vas a ser, en resumen, te amo amor y pienso hacerlo toda mi vida ❤️
+
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+/* ------------------ PANTALLA 1 ------------------ */
+
 const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
 const moodImg = document.getElementById("moodImg");
@@ -323,24 +388,21 @@ const moodImg = document.getElementById("moodImg");
 const screen1 = document.getElementById("screen1");
 const screen2 = document.getElementById("screen2");
 
-
-
 yesBtn.addEventListener("click", () => {
   screen1.style.display = "none";
   screen2.style.display = "flex";
 });
+
 let yesScale = 1;
 let noClicks = 0;
 
-
-
-  const noTexts = [
-    "¿Segura?",
-    "Poné si",
-    "Dalee",
-    "Micaela",
-    "Ja"
-  ];
+const noTexts = [
+  "¿Segura?",
+  "Poné si",
+  "Dalee",
+  "Micaela",
+  "Ja"
+];
 
 const images = [
   "mikabb.png",
@@ -352,18 +414,20 @@ const images = [
 ];
 
 noBtn.addEventListener("click", () => {
-  // texto del NO
+
+  // Cambia texto
   noBtn.innerText = noTexts[noClicks % noTexts.length];
 
-  // imagen
+  // Cambia imagen
   const imgIndex = Math.min(noClicks, images.length - 1);
   moodImg.src = images[imgIndex];
 
-  // agranda el SÍ
+  // Agranda el botón SÍ
   yesScale += 0.35;
   yesBtn.style.transform = `scale(${yesScale})`;
 
-  // mover el NO
+  // Mueve el botón NO
+  noBtn.style.position = "absolute";
   noBtn.style.left = Math.random() * (window.innerWidth - noBtn.offsetWidth) + "px";
   noBtn.style.top = Math.random() * (window.innerHeight - noBtn.offsetHeight) + "px";
 
@@ -374,51 +438,72 @@ noBtn.addEventListener("click", () => {
   noClicks++;
 });
 
-</script>
 
-<!-- MODAL CARTA -->
-<!-- MODAL CARTA -->
-<div id="letterModal" class="modal">
-  <div class="letter">
-    <span id="closeLetter" class="close">&times;</span>
+/* ------------------ MODAL CARTAS ------------------ */
 
-    <div class="letter-inner">
-      <h3 style="display: flex; justify-content:center;">💌 SPOILER</h3>
-      <p style="display: flex; justify-content:center;">Disponible desde el 14 de febrero. </p>
-      <p style="display: flex; justify-content:center;">Ansiosa?</p>
-    </div>
-  </div>
-</div>
+const openLetter = document.getElementById("openLetter");
+const openLetterExtra = document.getElementById("openLetterExtra");
+
+const modal = document.getElementById("letterModal");
+const closeLetter = document.getElementById("closeLetter");
+
+const letter = document.querySelector(".letter");
+const letter1 = document.getElementById("letter1");
+const letter2 = document.getElementById("letter2");
 
 
-<script>
-  const openLetter = document.getElementById("openLetter");
-  const modal = document.getElementById("letterModal");
-  const closeLetter = document.getElementById("closeLetter");
+// BOTÓN VER CARTA NORMAL
+openLetter.addEventListener("click", () => {
+  letter1.style.display = "block";
+  letter2.style.display = "none";
 
-  openLetter.addEventListener("click", () => {
-    modal.style.display = "flex";
-  });
+  modal.style.display = "flex";
 
-  closeLetter.addEventListener("click", () => {
-  const letter = document.querySelector(".letter");
+  // reinicia animación
+  letter.style.animation = "none";
+  void letter.offsetWidth;
+  letter.style.animation = "openLetter 0.8s ease forwards";
+});
+
+
+// BOTÓN EXTRA
+openLetterExtra.addEventListener("click", () => {
+  letter1.style.display = "none";
+  letter2.style.display = "block";
+
+  modal.style.display = "flex";
+
+  // reinicia animación
+  letter.style.animation = "none";
+  void letter.offsetWidth;
+  letter.style.animation = "openLetter 0.8s ease forwards";
+});
+
+
+// CERRAR CON X
+closeLetter.addEventListener("click", () => {
   letter.style.animation = "closeLetter 0.4s ease forwards";
 
   setTimeout(() => {
     modal.style.display = "none";
-    letter.style.animation = "openLetter 0.8s ease forwards";
   }, 400);
 });
 
 
+// CERRAR HACIENDO CLICK AFUERA
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    letter.style.animation = "closeLetter 0.4s ease forwards";
 
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) {
+    setTimeout(() => {
       modal.style.display = "none";
-    }
-  });
+    }, 400);
+  }
+});
+
 </script>
 
+
 </body>
-</body>
+
 </html>
