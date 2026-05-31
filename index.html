@@ -399,6 +399,36 @@ body {
 }
 
 
+/* CORAZONES CUMPLEAÑOS */
+
+.birthday-hearts {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.birthday-heart {
+  position: absolute;
+  bottom: -50px;
+  font-size: 35px;
+  animation: birthdayFloat linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes birthdayFloat {
+  from {
+    transform: translateY(0);
+    opacity: 0.9;
+  }
+
+  to {
+    transform: translateY(-120vh);
+    opacity: 0;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -465,6 +495,8 @@ body {
 
   <!-- PANTALLA 3 -->
   <div class="screen" id="screen3" style="display:none;">
+
+    <div class="birthday-hearts" id="birthdayHearts"></div>
     
     <div class="birthday-grid">
       <img src="WhatsApp Image 2026-05-31 at 13.32.53 (1).jpeg">
@@ -535,6 +567,8 @@ Ya paro porque no quiero que esta carta dure 5 hojas, pero ni mil hojas alcanzar
 </audio>
 <script>
 /* ------------------ PANTALLA 1 ------------------ */
+
+let heartInterval;
 
 const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
@@ -623,12 +657,13 @@ birthdayBtn.addEventListener("click", async () => {
   screen2.style.display = "none";
   screen3.style.display = "flex";
 
-  birthdayMusic.muted = false;
-  birthdayMusic.volume = 0.5;
+  if (!heartInterval) {
+    heartInterval = setInterval(createBirthdayHeart, 100);
+  }
 
   try {
     birthdayMusic.currentTime = 0;
-    await birthdayMusic.play();
+    birthdayMusic.play();
   } catch(err) {
     console.error(err);
   }
@@ -702,6 +737,29 @@ modal.addEventListener("click", (e) => {
     }, 400);
   }
 });
+
+function createBirthdayHeart() {
+
+  const container = document.getElementById("birthdayHearts");
+
+  const heart = document.createElement("span");
+
+  const hearts = ["💖", "💕", "💘", "💝", "❤️"];
+
+  heart.classList.add("birthday-heart");
+  heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+
+  heart.style.left = Math.random() * 100 + "%";
+
+  heart.style.animationDuration =
+    (Math.random() * 4 + 5) + "s";
+
+  container.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 9000);
+}
 
 </script>
 
