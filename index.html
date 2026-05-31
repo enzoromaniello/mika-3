@@ -120,11 +120,13 @@
       z-index: 1;
     }
 
+/* -------- PANTALLA 2 (SAN VALENTÍN) -------- */
+
 .photo-grid {
   position: absolute;
   inset: 0;
   width: 100vw;
-  height: 100dvh; /* clave para mobile y desktop */
+  height: 100dvh;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(3, 1fr);
@@ -138,12 +140,107 @@
   object-fit: cover;
 }
 
-/* MOBILE */
+/* -------- PANTALLA 3 (CUMPLEAÑOS) -------- */
+#screen3 {
+  display: none;
+  position: fixed;
+  inset: 0;
+
+  overflow: hidden;
+
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  color: white;
+}
+
+.birthday-grid {
+  position: absolute;
+  inset: 0;
+
+  display: grid;
+
+  /* PC: 3 columnas x 2 filas */
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 50vh);
+
+  width: 100vw;
+  height: 100vh;
+
+  z-index: 0;
+}
+
+.birthday-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* capa oscura */
+.birthday-grid::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+}
+
+/* celular */
 @media (max-width: 768px) {
-  .photo-grid {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+
+  .birthday-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 33.333vh);
   }
+
+}
+
+#screen3 h2 {
+  position: relative;
+  z-index: 2;
+
+  font-size: 3rem;
+  text-shadow: 0 0 10px black;
+
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(6px);
+
+  padding: 15px 25px;
+  border-radius: 20px;
+
+  margin-bottom: 20px;
+}
+
+#screen3 h2,
+#screen3 button {
+  position: relative;
+  z-index: 2;
+}
+
+#screen3 button {
+  position: relative;
+  z-index: 2;
+}
+
+#screen3 {
+  overflow: hidden;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+
+  #screen3 h2 {
+    font-size: 1.8rem;
+    width: 90%;
+    padding: 12px;
+  }
+
 }
 
 
@@ -347,14 +444,47 @@
 
   </div>
     <h2>Gracias te amo más 💘</h2>
-    <h4>Ahora si, tu cartita</h4>
+    <h4>Ahora si, tu cartita de San Valentin<br> 
+      (En caso de cumpleaños tocar al gordito de abajo)
+    </h4>
     <button id="openLetter" class="letter-btn">Ver carta 💌</button>
     <button id="openLetterExtra" class="letter-btn">Extra 💖</button>
+    <img
+    id="birthdayBtn"
+    src="WhatsApp Image 2026-05-31 at 13.40.52.jpeg"
+    alt="Cumpleaños"
+    style="
+      width: 140px;
+      margin-top: 20px;
+      cursor: pointer;
+      z-index: 2;
+      transition: transform 0.3s ease;
+    "
+  >
+  </div>
+
+  <!-- PANTALLA 3 -->
+  <div class="screen" id="screen3" style="display:none;">
+    
+    <div class="birthday-grid">
+      <img src="WhatsApp Image 2026-05-31 at 13.32.53 (1).jpeg">
+      <img src="WhatsApp Image 2026-05-31 at 13.32.53 (2).jpeg">
+      <img src="WhatsApp Image 2026-05-31 at 13.32.53.jpeg">
+      <img src="WhatsApp Image 2026-05-31 at 13.32.54 (1).jpeg">
+      <img src="WhatsApp Image 2026-05-31 at 13.32.54 (2).jpeg">
+      <img src="WhatsApp Image 2026-05-31 at 13.32.54.jpeg">
+
+    </div>
+
+    <h2>Feliz cumpleaños a la más hermosa (y mía) 💘</h2>
+
+    <button id="openBirthdayLetter" class="letter-btn">
+      Ver carta 🎂💌
+    </button>
+
   </div>
 
 
-
-<!-- MODAL CARTA -->
 <!-- MODAL CARTA -->
 <div id="letterModal" class="modal">
   <div class="letter">
@@ -385,9 +515,24 @@ Ya paro porque no quiero que esta carta dure 5 hojas, pero ni mil hojas alcanzar
       </p>
     </div>
 
+    <div class="letter-inner" id="letter3" style="display:none;">
+      <h3>Feliz cumpleaños amor 🎂💘</h3>
+      <p>
+        Feliz cumple amor de mi vida, espero que la pases muy lindo en este día tan especial, todavia no puedo creer que ya cumplis 19 y llevamos casi 3 años hablando, 
+        parece ayer cuando hablabamos boludeando por plato y miranos hoy, siendo tan felices juntos, pasandola mal si no nos vemos por al menos un finde y necesitandonos el uno al otro, estoy muy orgulloso de vos, 
+        viendo como vas creciendo, madurando cada vez mas y te convertis en una mujer para admirar, sos la mejor hija, hermana, amiga, y futura novia que puede existir, y sé que vas a seguir mejorando cada día, 
+        aunque ya seas la mujer perfecta para mi y con la que quiero estar siempre, aunque a veces vos sola te tires para abajo, siempre voy a estar ahi con vos para recordarte la hermosa persona que sos Mica, 
+        me haces muy feliz y espero poder acompañarte por muchisimos cumpleaños mas y que disfrutes tu regalo que te hago con mucho amor, te amo mucho mica y feliz cumpleaños mi princesa.
+        <br>
+        Con amor: Enzo ❤
+      </p>
+    </div>
+
   </div>
 </div>
-
+<audio id="birthdayMusic" >
+  <source src="caelelsol.mp3" type="audio/mpeg">
+</audio>
 <script>
 /* ------------------ PANTALLA 1 ------------------ */
 
@@ -396,7 +541,7 @@ const noBtn = document.getElementById("noBtn");
 const moodImg = document.getElementById("moodImg");
 
 const screen1 = document.getElementById("screen1");
-const screen2 = document.getElementById("screen2");
+
 
 yesBtn.addEventListener("click", () => {
   screen1.style.display = "none";
@@ -453,41 +598,88 @@ noBtn.addEventListener("click", () => {
 
 const openLetter = document.getElementById("openLetter");
 const openLetterExtra = document.getElementById("openLetterExtra");
+const openBirthdayLetter = document.getElementById("openBirthdayLetter");
+
+const birthdayBtn = document.getElementById("birthdayBtn");
+const birthdayMusic = document.getElementById("birthdayMusic");
+
+const screen2 = document.getElementById("screen2");
+const screen3 = document.getElementById("screen3");
 
 const modal = document.getElementById("letterModal");
 const closeLetter = document.getElementById("closeLetter");
 
 const letter = document.querySelector(".letter");
+
 const letter1 = document.getElementById("letter1");
 const letter2 = document.getElementById("letter2");
+const letter3 = document.getElementById("letter3");
 
 
-// BOTÓN VER CARTA NORMAL
+/* -------- IR A PANTALLA CUMPLEAÑOS -------- */
+
+birthdayBtn.addEventListener("click", async () => {
+
+  screen2.style.display = "none";
+  screen3.style.display = "flex";
+
+  birthdayMusic.muted = false;
+  birthdayMusic.volume = 0.5;
+
+  try {
+    birthdayMusic.currentTime = 0;
+    await birthdayMusic.play();
+  } catch(err) {
+    console.error(err);
+  }
+
+});
+
+
+/* -------- CARTA NORMAL -------- */
+
 openLetter.addEventListener("click", () => {
   letter1.style.display = "block";
   letter2.style.display = "none";
+  letter3.style.display = "none";
 
   modal.style.display = "flex";
 
-  // reinicia animación
   letter.style.animation = "none";
   void letter.offsetWidth;
   letter.style.animation = "openLetter 0.8s ease forwards";
 });
 
 
-// BOTÓN EXTRA
+/* -------- CARTA EXTRA -------- */
+
 openLetterExtra.addEventListener("click", () => {
   letter1.style.display = "none";
   letter2.style.display = "block";
+  letter3.style.display = "none";
 
   modal.style.display = "flex";
 
-  // reinicia animación
   letter.style.animation = "none";
   void letter.offsetWidth;
   letter.style.animation = "openLetter 0.8s ease forwards";
 });
+
+
+/* -------- CARTA CUMPLEAÑOS -------- */
+
+openBirthdayLetter.addEventListener("click", () => {
+  letter1.style.display = "none";
+  letter2.style.display = "none";
+  letter3.style.display = "block";
+
+  modal.style.display = "flex";
+
+  letter.style.animation = "none";
+  void letter.offsetWidth;
+  letter.style.animation = "openLetter 0.8s ease forwards";
+});
+
 
 
 // CERRAR CON X
@@ -512,6 +704,7 @@ modal.addEventListener("click", (e) => {
 });
 
 </script>
+
 
 
 </body>
